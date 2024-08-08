@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="video.css"/>
+<script src="v3.js" type="text/javascript"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+</script>
+<style>
+    div{
+        display: flex;
+        justify-content: center;
+    }
+
+    div ul{
+        list-style: none;
+        margin-right: 30px;
+    }
+
+    div ul li{
+        padding: 5px;
+    }
+
+    div ul li input{
+        border: solid 1px black;
+        padding: 10px;
+        font-size: 20px;
+        outline: none;
+        border-radius: 15px;
+    }
+
+    div ul li button{
+        padding: 5px 15px;
+        font-size: 15px;
+        border-radius: 20px;
+        border: solid 1px black;
+        background-color: wheat;
+    }
+
+    div ul li button:hover{
+        cursor: pointer;
+        background-color: rgb(216, 189, 138);
+        transition: 0.2s;
+    }
+
+    p{
+        display: flex;
+        justify-content: center;
+    }
+</style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>輸入暗號</li>
+            <li><input name="shadow" id="jeng" type="text"></li>
+            <li><button id="shoot" onClick="boom()">發射</button></li>
+        </ul>
+    </div>
+    <p></p>
+</body>    
+</html>

@@ -1,0 +1,33 @@
+@font-face {
+    font-family: seto;
+    src: url(SetoFont.ttf);
+}
+
+* {
+    font-family: seto;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(245, 201, 120);
+    border-radius: 20px;
+  }
+  
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(199, 173, 124);
+}
+
+iframe{
+    display: inline-block;
+    margin: 10px;
+    border: 10px solid wheat;
+    border-radius: 20px;
+}
+

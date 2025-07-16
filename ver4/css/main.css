@@ -1,0 +1,191 @@
+.banner{
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background-color: rgba(14, 105, 224, 0.3);
+    justify-content: center;
+    font-size: 40px;
+    display: flex;
+    padding: 20px;
+    z-index: 1000;
+    top: 0;
+    width: 100%;
+}
+
+.banner img{
+    border-radius: 20px;
+    width: 80px;
+    margin-right: 30px;
+    border: 3px solid rgb(20, 196, 240);
+}
+
+*{  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#canvas1{
+  border: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
+  z-index: 0;
+  display: block;
+  object-fit: cover;
+}
+
+#user{
+  display:none;
+}
+
+#bg00, #bg01, #bg02, #bbg00, #bbg01, #bbg02{
+  display:none;
+}
+#npc, #npc0, #npc1, #npc2{
+  display:none;
+}
+.Background, .npc{
+  display:none;
+}
+.game-container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.scrambled-text {
+    font-family: 'Courier New', monospace;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: default;
+    user-select: none;
+}
+
+.scrambled-text .char {
+    display: inline-block;
+    transition: all 0.1s ease;
+}
+
+.scrambled-text .char:hover {
+    color: #ffffff00;
+    text-shadow: 0 0 10px rgb(255, 255, 255);
+}
+
+.feature {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Bluring page styles */
+.bluring {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(156, 151, 151, 0.4);
+    z-index: 2000;
+    display: none;
+    overflow-y: auto;
+    padding: 100px 20px 20px 20px;
+}
+
+.bluring.show {
+    display: block;
+}
+
+.blurp1, .blurp2, .blurp3 {
+    display: none;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px);
+}
+
+.blurp1.show, .blurp2.show, .blurp3.show {
+    display: flex;
+}
+
+.bluring iframe {
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.bluring iframe:hover {
+    transform: scale(1.05);
+}
+
+/* Character description styles */
+.character-description {
+    position: fixed;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2002;
+    background-color: rgba(14, 105, 224, 0.3);
+    justify-content: center;
+    font-size: 40px;
+    display: flex;
+    padding: 20px;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.character-description h2 {
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    margin-bottom: 0;
+}
+
+.character-description p {
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: 1.2;
+    margin-bottom: 0;
+}
+
+/* Adjust blur sections to account for fixed description */
+.blurp1, .blurp2, .blurp3 {
+    display: none;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px);
+    padding-top: 100px;
+}
+
+/* Responsive design for character descriptions */
+@media (max-width: 768px) {
+    .character-description {
+        left: 10px;
+        right: 10px;
+        transform: none;
+        max-width: none;
+        padding: 15px;
+        font-size: 28px;
+    }
+    
+    .blurp1, .blurp2, .blurp3 {
+        padding-top: 120px;
+    }
+}

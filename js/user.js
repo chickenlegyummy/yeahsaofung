@@ -1,60 +1,56 @@
 import { IDLE , READYRUN , RUN , FINISHRUN , JUMP , FALL } from './userstate.js';
 
-let idle_img =["img/user/00_idle/0.png","img/user/00_idle/1.png","img/user/00_idle/2.png","img/user/00_idle/3.png","img/user/00_idle/4.png","img/user/00_idle/5.png","img/user/00_idle/6.png","img/user/00_idle/7.png","img/user/00_idle/8.png","img/user/00_idle/9.png"
-,"img/user/00_idle/10.png","img/user/00_idle/11.png","img/user/00_idle/12.png","img/user/00_idle/13.png","img/user/00_idle/14.png","img/user/00_idle/15.png","img/user/00_idle/16.png","img/user/00_idle/17.png","img/user/00_idle/18.png","img/user/00_idle/19.png"
-,"img/user/00_idle/20.png"];
-let runready =["img/user/01_run_00ready/skeleton-01_run_00ready_00.png","img/user/01_run_00ready/skeleton-01_run_00ready_01.png","img/user/01_run_00ready/skeleton-01_run_00ready_02.png","img/user/01_run_00ready/skeleton-01_run_00ready_03.png","img/user/01_run_00ready/skeleton-01_run_00ready_04.png","img/user/01_run_00ready/skeleton-01_run_00ready_05.png"
-,"img/user/01_run_00ready/skeleton-01_run_00ready_06.png","img/user/01_run_00ready/skeleton-01_run_00ready_07.png","img/user/01_run_00ready/skeleton-01_run_00ready_08.png","img/user/01_run_00ready/skeleton-01_run_00ready_09.png","img/user/01_run_00ready/skeleton-01_run_00ready_10.png"];
-let runstart =["img/user/01_run_01start/skeleton-01_run_01start_00.png","img/user/01_run_01start/skeleton-01_run_01start_01.png","img/user/01_run_01start/skeleton-01_run_01start_02.png","img/user/01_run_01start/skeleton-01_run_01start_03.png","img/user/01_run_01start/skeleton-01_run_01start_04.png","img/user/01_run_01start/skeleton-01_run_01start_05.png"
-,"img/user/01_run_01start/skeleton-01_run_01start_06.png","img/user/01_run_01start/skeleton-01_run_01start_07.png","img/user/01_run_01start/skeleton-01_run_01start_08.png","img/user/01_run_01start/skeleton-01_run_01start_09.png","img/user/01_run_01start/skeleton-01_run_01start_10.png","img/user/01_run_01start/skeleton-01_run_01start_11.png","img/user/01_run_01start/skeleton-01_run_01start_12.png","img/user/01_run_01start/skeleton-01_run_01start_13.png","img/user/01_run_01start/skeleton-01_run_01start_14.png","img/user/01_run_01start/skeleton-01_run_01start_15.png"
-,"img/user/01_run_01start/skeleton-01_run_01start_16.png","img/user/01_run_01start/skeleton-01_run_01start_17.png","img/user/01_run_01start/skeleton-01_run_01start_18.png","img/user/01_run_01start/skeleton-01_run_01start_19.png","img/user/01_run_01start/skeleton-01_run_01start_20.png"
-,"img/user/01_run_01start/skeleton-01_run_01start_21.png","img/user/01_run_01start/skeleton-01_run_01start_22.png","img/user/01_run_01start/skeleton-01_run_01start_23.png","img/user/01_run_01start/skeleton-01_run_01start_24.png"];
-let runfinish =["img/user/01_run_02finish/skeleton-01_run_02finish_00.png","img/user/01_run_02finish/skeleton-01_run_02finish_01.png","img/user/01_run_02finish/skeleton-01_run_02finish_02.png","img/user/01_run_02finish/skeleton-01_run_02finish_03.png","img/user/01_run_02finish/skeleton-01_run_02finish_04.png","img/user/01_run_02finish/skeleton-01_run_02finish_05.png"
-,"img/user/01_run_02finish/skeleton-01_run_02finish_06.png","img/user/01_run_02finish/skeleton-01_run_02finish_07.png","img/user/01_run_02finish/skeleton-01_run_02finish_08.png","img/user/01_run_02finish/skeleton-01_run_02finish_09.png","img/user/01_run_02finish/skeleton-01_run_02finish_10.png"];
-let jump_img =["img/user/02_jump_01start/skeleton-02_jump_01start_00.png","img/user/02_jump_01start/skeleton-02_jump_01start_01.png","img/user/02_jump_01start/skeleton-02_jump_01start_02.png","img/user/02_jump_01start/skeleton-02_jump_01start_03.png","img/user/02_jump_01start/skeleton-02_jump_01start_04.png","img/user/02_jump_01start/skeleton-02_jump_01start_05.png"
-,"img/user/02_jump_01start/skeleton-02_jump_01start_06.png","img/user/02_jump_01start/skeleton-02_jump_01start_07.png","img/user/02_jump_01start/skeleton-02_jump_01start_08.png","img/user/02_jump_01start/skeleton-02_jump_01start_09.png","img/user/02_jump_01start/skeleton-02_jump_01start_10.png"];
-let fall_img =["img/user/02_jump_02finish/skeleton-02_jump_02finish_00.png","img/user/02_jump_02finish/skeleton-02_jump_02finish_01.png","img/user/02_jump_02finish/skeleton-02_jump_02finish_02.png","img/user/02_jump_02finish/skeleton-02_jump_02finish_03.png","img/user/02_jump_02finish/skeleton-02_jump_02finish_04.png","img/user/02_jump_02finish/skeleton-02_jump_02finish_05.png"
-,"img/user/02_jump_02finish/skeleton-02_jump_02finish_06.png","img/user/02_jump_02finish/skeleton-02_jump_02finish_07.png","img/user/02_jump_02finish/skeleton-02_jump_02finish_08.png","img/user/02_jump_02finish/skeleton-02_jump_02finish_09.png","img/user/02_jump_02finish/skeleton-02_jump_02finish_10.png"];
-
-let u_states = [ idle_img, runready, runstart, runfinish, jump_img, fall_img ];
-
-// Preload all user images
-let preloadedImages = [];
-let imagesLoaded = 0;
-let totalImages = 0;
-
-function preloadUserImages() {
-    // Calculate total images
-    u_states.forEach(stateArray => {
-        totalImages += stateArray.length;
-    });
+// Get preloaded images from HTML
+function getPreloadedImages() {
+    const idle_img = [];
+    const runready = [];
+    const runstart = [];
+    const runfinish = [];
+    const jump_img = [];
+    const fall_img = [];
     
-    u_states.forEach((stateArray, stateIndex) => {
-        preloadedImages[stateIndex] = [];
-        stateArray.forEach((imageSrc, frameIndex) => {
-            const img = new Image();
-            img.onload = () => {
-                imagesLoaded++;
-                if (imagesLoaded === totalImages) {
-                    console.log('All user images preloaded successfully');
-                }
-            };
-            img.onerror = () => {
-                console.error('Failed to load image:', imageSrc);
-                imagesLoaded++; // Still count it to prevent hanging
-            };
-            img.src = imageSrc;
-            preloadedImages[stateIndex][frameIndex] = img;
-        });
-    });
+    // Idle images (21 frames: 0-20)
+    for (let i = 0; i <= 20; i++) {
+        idle_img.push(document.getElementById(`idle_${i}`));
+    }
+    
+    // Run ready images (11 frames: 0-10)
+    for (let i = 0; i <= 10; i++) {
+        runready.push(document.getElementById(`runready_${i}`));
+    }
+    
+    // Run start images (25 frames: 0-24)
+    for (let i = 0; i <= 24; i++) {
+        runstart.push(document.getElementById(`runstart_${i}`));
+    }
+    
+    // Run finish images (11 frames: 0-10)
+    for (let i = 0; i <= 10; i++) {
+        runfinish.push(document.getElementById(`runfinish_${i}`));
+    }
+    
+    // Jump images (11 frames: 0-10)
+    for (let i = 0; i <= 10; i++) {
+        jump_img.push(document.getElementById(`jump_${i}`));
+    }
+    
+    // Fall images (11 frames: 0-10)
+    for (let i = 0; i <= 10; i++) {
+        fall_img.push(document.getElementById(`fall_${i}`));
+    }
+    
+    return [idle_img, runready, runstart, runfinish, jump_img, fall_img];
 }
 
-// Initialize preloading
-preloadUserImages();
+let u_states;
 
 export class user{
     constructor(game){
         this.game = game;
+        
+        // Initialize u_states from preloaded HTML images
+        u_states = getPreloadedImages();
+        
         this.originalWidth = 300;
         this.originalHeight = 273;
         this.relativeWidth = this.originalWidth / game.width;
@@ -121,20 +117,16 @@ export class user{
                 this.frameX = 0;
             }
         }
-        
-        // Ensure frame indices are within valid bounds
-        this.frameX = Math.max(0, Math.min(this.frameX, this.maxFrame - 1));
-        this.frameY = Math.max(0, Math.min(this.frameY, u_states.length - 1));
     }
 
     draw(context){ 
         context.save();
 
-        // Use preloaded image instead of changing src
-        const currentImage = preloadedImages[this.frameY] && preloadedImages[this.frameY][this.frameX] 
-            ? preloadedImages[this.frameY][this.frameX] 
+        // Get the current frame image from preloaded DOM elements
+        const currentImage = u_states[this.frameY] && u_states[this.frameY][this.frameX] 
+            ? u_states[this.frameY][this.frameX] 
             : this.image;
-        
+
         if (!this.facingRight) {
             context.scale(-1, 1);
             context.drawImage(currentImage, -this.x - this.width, this.y, this.width, this.height);

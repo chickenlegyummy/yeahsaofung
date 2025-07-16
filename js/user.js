@@ -18,6 +18,40 @@ let fall_img =["img/user/02_jump_02finish/skeleton-02_jump_02finish_00.png","img
 
 let u_states = [ idle_img, runready, runstart, runfinish, jump_img, fall_img ];
 
+// Preload all user images
+let preloadedImages = [];
+let imagesLoaded = 0;
+let totalImages = 0;
+
+function preloadUserImages() {
+    // Calculate total images
+    u_states.forEach(stateArray => {
+        totalImages += stateArray.length;
+    });
+    
+    u_states.forEach((stateArray, stateIndex) => {
+        preloadedImages[stateIndex] = [];
+        stateArray.forEach((imageSrc, frameIndex) => {
+            const img = new Image();
+            img.onload = () => {
+                imagesLoaded++;
+                if (imagesLoaded === totalImages) {
+                    console.log('All user images preloaded successfully');
+                }
+            };
+            img.onerror = () => {
+                console.error('Failed to load image:', imageSrc);
+                imagesLoaded++; // Still count it to prevent hanging
+            };
+            img.src = imageSrc;
+            preloadedImages[stateIndex][frameIndex] = img;
+        });
+    });
+}
+
+// Initialize preloading
+preloadUserImages();
+
 export class user{
     constructor(game){
         this.game = game;
@@ -41,7 +75,7 @@ export class user{
         this.gravity = 1;
         this.speed = 0;
         this.maxspeed = 10;
-        this.fps =12;
+        this.fps =60;
         this.frameInterval = 1000 / this.fps; 
         this.frameTimer = 0;
         this.facingRight = true;
@@ -87,20 +121,28 @@ export class user{
                 this.frameX = 0;
             }
         }
+        
+        // Ensure frame indices are within valid bounds
+        this.frameX = Math.max(0, Math.min(this.frameX, this.maxFrame - 1));
+        this.frameY = Math.max(0, Math.min(this.frameY, u_states.length - 1));
     }
 
     draw(context){ 
         context.save();
+
+        // Use preloaded image instead of changing src
+        const currentImage = preloadedImages[this.frameY] && preloadedImages[this.frameY][this.frameX] 
+            ? preloadedImages[this.frameY][this.frameX] 
+            : this.image;
         
         if (!this.facingRight) {
             context.scale(-1, 1);
-            context.drawImage(this.image, -this.x - this.width, this.y, this.width, this.height);
+            context.drawImage(currentImage, -this.x - this.width, this.y, this.width, this.height);
         } else {
-            context.drawImage(this.image, this.x, this.y, this.width, this.height);
+            context.drawImage(currentImage, this.x, this.y, this.width, this.height);
         }
         
         context.restore();
-        this.image.src = u_states[this.frameY][this.frameX];
     }
     
     updateSize() {

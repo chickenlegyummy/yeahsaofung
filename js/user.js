@@ -41,7 +41,7 @@ export class user{
         this.gravity = 1;
         this.speed = 0;
         this.maxspeed = 10;
-        this.fps =60;
+        this.fps =12;
         this.frameInterval = 1000 / this.fps; 
         this.frameTimer = 0;
         this.facingRight = true;

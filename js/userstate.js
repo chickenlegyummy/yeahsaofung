@@ -126,7 +126,7 @@ export class FALL extends State{
         this.user.maxFrame = 11;
     }
     handleInput(input){
-        if(this.user.OnGround()){
+        if(this.user.OnGround()&& this.user.frameX >= this.user.maxFrame - 1){
             if(this.user.speed > 0){
                 this.user.setstate(states.RUN);
             }

@@ -110,7 +110,7 @@ export class JUMP extends State{
         }
     }
     handleInput(input){
-        if(this.user.vy > this.user.gravity){
+        if(this.user.OnGround()){
             this.user.setstate(states.FALL);
         }
     }
